@@ -1,21 +1,94 @@
 header {
 
+    text-align: center;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+nav {
+    margin-top: 5px;
+    text-align: left;
+    margin-bottom: 10px;
+
 }
 
 section {
 
+    padding: 10px;
     background-color: #D6FAD1;
 }
 
 
 article {
 
+    margin-bottom: 10px;
+
+    padding: 10px;
     background-color: #00F26D;
+    border-radius: 10px;
+
 }
 
-footer{
+#btnAgregarC {
+
+    width: 170px;
+
+}
+
+#carreraSelect {
+
+    width: 70px;
+
+}
+
+select {
+
+    width: 100px;
+}
+
+.bajaRenglon {
+    display: block;
 
 
+}
+
+.radioCorredor {
+    display: inline-block;
+    margin-top: 5px;
+
+}
+
+#tabla {
+
+    margin-top: 20px;
+}
+
+.btnInputs {
+
+    display: block;
+    text-align: left;
+    width: auto;
+    text-align: center;
+
+}
+
+#promInsc {
+
+    margin-bottom: 10px;
+}
+
+label {
+
+    display: block;
+    margin-bottom: 10;
+}
+
+footer {
+    border-radius: 10px;
+    text-align: center;
     background-color: #F9F9DC;
 
 }

@@ -10,10 +10,13 @@
 
 <header>
     <h2> Sitio de Corredores</h2>
+
     <img src="img/imagen.jpeg" alt="imagen de deportes">
 
-    <input type="button" value="Datos">
-    <input type="button" value="Estadisticas">
+    <nav>
+        <input type="button" value="Datos">
+        <input type="button" value="Estadisticas">
+    </nav>
 
 </header>
 
@@ -41,7 +44,7 @@
 
         <label for="Cupo"> Cupo:</label>
         <input type="number" id="Cupo">
-        <input type="button" value="Agregar Carrera">
+        <input type="button" class="btnInputs" id="btnAgregarC" value="Agregar Carrera">
 
     </article>
 
@@ -67,7 +70,7 @@
         </select>
 
 
-        <input type="button" value="Agregar/Actualizar patrocinador">
+        <input type="button" class="btnInputs" value="Agregar/Actualizar patrocinador">
 
 
     </article>
@@ -85,16 +88,18 @@
         <input type="number" id="compCed">
 
 
-        <label for="FechaVenc">Fecha de vencimiento de ficha medica:</label>
-        <input id="FechaVenc" type="date">
+        <label for="fechaVenc">Fecha de vencimiento de ficha medica:</label>
+        <input id="fechaVenc" class="bajaRenglon" type="date">
 
-        <label>Tipo de corredor :</label>
+        <label class="radioCorredor">Tipo de corredor :</label>
 
-        <input type="radio" id="elite">
-        <label for="elite">Deportista de elite</label>
+        <input type="radio" id="elite" class="radioCorredor">
+        <label for="elite" class="radioCorredor">Deportista de elite</label>
 
-        <input type="radio" id="comun">
-        <label for="comun">Deportista comun</label>
+        <input type="radio" id="comun" class="radioCorredor">
+        <label for="comun" class="radioCorredor">Deportista comun</label>
+
+        <input type="button" class="btnInputs" value="Agregar Corredor">
 
 
     </article>
@@ -110,7 +115,7 @@
         <label for="nomCarreras">Carreras:</label>
         <select id="nomCarreras"> </select>
 
-        <input type="button" value="Inscribir">
+        <input type="button" class="btnInputs" value="Inscribir">
 
 
     </article>
@@ -126,7 +131,7 @@
 
         <h4>Datos generales</h4>
 
-        <label>Promedio de inscrpitos por carrera: <span> Sin Datos </span></label>
+        <label id="promInsc">Promedio de inscrpitos por carrera: <span> Sin Datos </span></label>
 
         <label> Carrera/s con mas inscrpitos: </label>
 
@@ -151,18 +156,18 @@
         <h4> Consulta inscriptos</h4>
 
         <label for="consultaCarrera">Carrera:</label>
-        <select id="consultaCarrera"> </select>
+        <select id="consultaCarrera" class="bajaRenglon"> </select>
 
-        <label>Ordenar por:</label>
+        <label class="radioCorredor">Ordenar por:</label>
 
-        <input type="radio" id="nombre">
-        <label for="nombre">Nombre</label>
+        <input type="radio" class="radioCorredor" id="nombre">
+        <label for="nombre" class="radioCorredor">Nombre</label>
 
-        <input type="radio" id="numero">
-        <label for="numero">Numero</label>
+        <input type="radio" class="radioCorredor" id="numero">
+        <label for="numero" class="radioCorredor">Numero</label>
 
 
-        <table>
+        <table id="tabla">
             <caption> inscriptos</caption>
 
             <tr>
@@ -187,11 +192,11 @@
         <h4> Visualisar mapa: </h4>
 
 
-        <input type="radio" id="carrRadio">
-        <label for="carrRadio">Por Carreras</label>
+        <input type="radio" id="carrRadio" class="radioCorredor">
+        <label for="carrRadio" class="radioCorredor">Por Carreras</label>
 
-        <input type="radio" id="inscripRadio">
-        <label for="inscripRadio">Por Inscripcion</label>
+        <input type="radio" class="radioCorredor" id="inscripRadio">
+        <label for="inscripRadio" class="radioCorredor">Por Inscripcion</label>
 
     </article>
 
@@ -202,9 +207,11 @@
 
     <p>Programación 1 - Obligatorio 1er semestre 2025 - Autores:</p>
 
-    <p>Grupo M1B - Octavio Sosa(363131) - <span><a href="https://aulas.ort.edu.uy/user/view.php?id=68189&course=4095">Ir hacia el perfil de estudiante</a></span></p>
-    <p>Grupo M1B - Alan Klein(358518) - <span><a href="https://aulas.ort.edu.uy/user/view.php?id=67422&course=4095">Ir hacia el perfil de estudiante</a></span></p>
-    
+    <p>Grupo M1B - Octavio Sosa(363131) - <span><a href="https://aulas.ort.edu.uy/user/view.php?id=68189&course=4095">Ir
+                hacia el perfil de estudiante</a></span></p>
+    <p>Grupo M1B - Alan Klein(358518) - <span><a href="https://aulas.ort.edu.uy/user/view.php?id=67422&course=4095">Ir
+                hacia el perfil de estudiante</a></span></p>
+
 </footer>
 
 </body>
