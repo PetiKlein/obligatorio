@@ -93,10 +93,10 @@
 
         <label class="radioCorredor">Tipo de corredor :</label>
 
-        <input type="radio" id="elite" class="radioCorredor">
+        <input type="radio" id="elite" class="radioCorredor" name="radioDeportista">
         <label for="elite" class="radioCorredor">Deportista de elite</label>
 
-        <input type="radio" id="comun" checked class="radioCorredor">
+        <input type="radio" id="comun"  class="radioCorredor" name="radioDeportista" checked >
         <label for="comun" class="radioCorredor" >Deportista comun</label>
 
         <input type="button" class="btnInputs" value="Agregar Corredor">
@@ -139,7 +139,7 @@
             <li> Sin Datos</li>
         </ul>
 
-        <label> Carrera/s con mas inscrpitos por fecha: </label>
+        <label> Carrera/s con mas inscriptos por fecha: </label>
 
         <ul>
             <li> Sin Datos</li>
@@ -160,10 +160,10 @@
 
         <label class="radioCorredor">Ordenar por:</label>
 
-        <input type="radio" class="radioCorredor" id="nombre">
+        <input type="radio" name="ordenarPor" class="radioCorredor" id="nombre">
         <label for="nombre" class="radioCorredor">Nombre</label>
 
-        <input type="radio" class="radioCorredor" id="numero">
+        <input type="radio" name="ordenarPor" class="radioCorredor" id="numero">
         <label for="numero" class="radioCorredor">Numero</label>
 
 
@@ -188,10 +188,10 @@
         <h4> Visualisar mapa: </h4>
 
 
-        <input type="radio" id="carrRadio" class="radioCorredor">
+        <input type="radio" name="verMapa" id="carrRadio" class="radioCorredor">
         <label for="carrRadio" class="radioCorredor">Por Carreras</label>
 
-        <input type="radio" class="radioCorredor" id="inscripRadio">
+        <input type="radio" name="verMapa" class="radioCorredor" id="inscripRadio">
         <label for="inscripRadio" class="radioCorredor">Por Inscripcion</label>
 
     </article>
