@@ -13,207 +13,211 @@
     <link rel="stylesheet" href="/css/estilos.css">
 </head>
 
-<header>
-    <h2> Sitio de Corredores</h2>
+<body>
 
-    <img src="img/imagen.jpeg" alt="imagen de deportes">
+    <header>
+        <h2> Sitio de Corredores</h2>
 
-    <nav>
-        <input type="button" value="Datos">
-        <input type="button" value="Estadisticas">
-    </nav>
+        <img src="img/imagen.jpeg" alt="imagen de deportes">
 
-</header>
+        <nav>
+            <input type="button" value="Datos">
+            <input type="button" value="Estadisticas">
+        </nav>
 
-<section>
+    </header>
 
+    <section>
 
-    <h3> Datos </h3>
 
-    <article>
-        <h4> Carreras </h4>
+        <h3> Datos </h3>
 
+        <article>
+            <h4> Carreras </h4>
 
-        <label for="nomTxt">Nombre:</label>
-        <input type="text" id="nomTxt">
 
-        <label for="selectDep"> Departamento:</label>
-        <select id="selectDep">
-            <option value="Montevideo">Montevideo</option>
-            <option value="Colonia">Colonia del Sacramento</option>
-            <option value="Canelones">Canelones</option>
-        </select>
+            <label for="nomTxt">Nombre:</label>
+            <input type="text" id="nomTxt">
 
-        <label for="Fecha">Fecha:</label>
-        <input id="Fecha" type="date">
+            <label for="selectDep"> Departamento:</label>
+            <select id="selectDep">
+                <option value="Montevideo">Montevideo</option>
+                <option value="Colonia">Colonia del Sacramento</option>
+                <option value="Canelones">Canelones</option>
+            </select>
 
-        <label for="Cupo"> Cupo:</label>
-        <input type="number" id="Cupo">
-        <input type="button" class="btnInputs" id="btnAgregarC" value="Agregar Carrera">
+            <label for="Fecha">Fecha:</label>
+            <input id="FechaCarr" type="date">
 
-    </article>
+            <label for="CupoCarr"> Cupo:</label>
+            <input type="number" id="Cupo">
+            <input type="button" class="btnInputs" id="btnAgregarC" value="Agregar Carrera">
 
+        </article>
 
-    <article>
-        <h4>Patrocinadores</h4>
 
-        <label for="nomPat">Nombre:</label>
-        <input type="text" id="nomPat">
+        <article>
+            <h4>Patrocinadores</h4>
 
-        <label for="rubPat">Rubro:</label>
-        <select id="rubPat">
-            <option value="alimenticio">Alimenticio</option>
-            <option value="ropa">Ropa</option>
-            <option value="salud">Salud</option>
-        </select>
+            <label for="nomPat">Nombre:</label>
+            <input type="text" id="nomPat">
 
-        <label>Carreras:</label>
+            <label for="rubPat">Rubro:</label>
+            <select id="rubPat">
+                <option value="alimenticio">Alimenticio</option>
+                <option value="ropa">Ropa</option>
+                <option value="salud">Salud</option>
+            </select>
 
+            <label>Carreras:</label>
 
-        <select id="carreraSelect" multiple>
 
-        </select>
+            <select id="carreraSelect" multiple>
 
+            </select>
 
-        <input type="button" class="btnInputs" value="Agregar/Actualizar patrocinador">
 
+            <input type="button" class="btnInputs" value="Agregar/Actualizar patrocinador">
 
-    </article>
 
-    <article>
-        <h4> Corredores</h4>
+        </article>
 
-        <label for="compNom">Nombre:</label>
-        <input type="text" id="compNom">
+        <article>
+            <h4> Corredores</h4>
 
-        <label for="compEdad">Edad:</label>
-        <input type="number" id="compEdad">
+            <label for="compNom">Nombre:</label>
+            <input type="text" id="compNom">
 
-        <label for="compCed">Cedula:</label>
-        <input type="number" id="compCed">
+            <label for="compEdad">Edad:</label>
+            <input type="number" id="compEdad">
 
+            <label for="compCed">Cedula:</label>
+            <input type="number" id="compCed">
 
-        <label for="fechaVenc">Fecha de vencimiento de ficha medica:</label>
-        <input id="fechaVenc" class="bajaRenglon" type="date">
 
-        <label class="radioCorredor">Tipo de corredor :</label>
+            <label for="fechaVenc">Fecha de vencimiento de ficha medica:</label>
+            <input id="fechaVenc" class="bajaRenglon" type="date">
 
-        <input type="radio" id="elite" class="radioCorredor" name="radioDeportista">
-        <label for="elite" class="radioCorredor">Deportista de elite</label>
+            <label class="radioCorredor">Tipo de corredor :</label>
 
-        <input type="radio" id="comun"  class="radioCorredor" name="radioDeportista" checked >
-        <label for="comun" class="radioCorredor" >Deportista comun</label>
+            <input type="radio" id="elite" class="radioCorredor" name="radioDeportista">
+            <label for="elite" class="radioCorredor">Deportista de elite</label>
 
-        <input type="button" class="btnInputs" value="Agregar Corredor">
+            <input type="radio" id="comun" class="radioCorredor" name="radioDeportista" checked>
+            <label for="comun" class="radioCorredor">Deportista comun</label>
 
+            <input type="button" class="btnInputs" value="Agregar Corredor">
 
-    </article>
 
+        </article>
 
-    <article>
 
-        <h4>Inscripciones</h4>
+        <article>
 
-        <label for="nomCorredores">Corredores</label>
-        <select id="nomCorredores"> </select>
+            <h4>Inscripciones</h4>
 
-        <label for="nomCarreras">Carreras:</label>
-        <select id="nomCarreras"> </select>
+            <label for="nomCorredores">Corredores</label>
+            <select id="nomCorredores"> </select>
 
-        <input type="button" class="btnInputs" value="Inscribir">
+            <label for="nomCarreras">Carreras:</label>
+            <select id="nomCarreras"> </select>
 
+            <input type="button" class="btnInputs" value="Inscribir">
 
-    </article>
-</section>
 
-<section>
+        </article>
+    </section>
 
+    <section>
 
-    <h3>Estadisticas</h3>
 
-    <article>
+        <h3>Estadisticas</h3>
 
+        <article>
 
-        <h4>Datos generales</h4>
 
-        <label id="promInsc">Promedio de inscrpitos por carrera: <span> Sin Datos </span></label>
+            <h4>Datos generales</h4>
 
-        <label> Carrera/s con mas inscrpitos: </label>
+            <label id="promInsc">Promedio de inscriptos por carrera: <span> Sin Datos </span></label>
 
-        <ul>
-            <li> Sin Datos</li>
-        </ul>
+            <label> Carrera/s con mas inscriptos: </label>
 
-        <label> Carrera/s con mas inscriptos por fecha: </label>
+            <ul>
+                <li> Sin Datos</li>
+            </ul>
 
-        <ul>
-            <li> Sin Datos</li>
-        </ul>
+            <label> Carrera/s con mas inscriptos por fecha: </label>
 
-        <label> Porcentaje de corredores de elite: <span> Sin Datos </span></label>
+            <ul>
+                <li> Sin Datos</li>
+            </ul>
 
+            <label> Porcentaje de corredores de elite: <span> Sin Datos </span></label>
 
-    </article>
 
+        </article>
 
-    <article>
 
-        <h4> Consulta inscriptos</h4>
+        <article>
 
-        <label for="consultaCarrera">Carrera:</label>
-        <select id="consultaCarrera" class="bajaRenglon"> </select>
+            <h4> Consulta inscriptos</h4>
 
-        <label class="radioCorredor">Ordenar por:</label>
+            <label for="consultaCarrera">Carrera:</label>
+            <select id="consultaCarrera" class="bajaRenglon"> </select>
 
-        <input type="radio" name="ordenarPor" class="radioCorredor" id="nombre">
-        <label for="nombre" class="radioCorredor">Nombre</label>
+            <label class="radioCorredor">Ordenar por:</label>
 
-        <input type="radio" name="ordenarPor" class="radioCorredor" id="numero">
-        <label for="numero" class="radioCorredor">Numero</label>
+            <input type="radio" name="ordenarPor" class="radioCorredor" id="nombreCorr">
+            <label for="nombreCorr" class="radioCorredor">Nombre</label>
 
+            <input type="radio" name="ordenarPor" class="radioCorredor" id="numeroCorr">
+            <label for="numeroCorr" class="radioCorredor">Numero</label>
 
-        <table id="tabla">
-            <caption> inscriptos</caption>
 
-            <tr>
-                <th>Nombre</th>
-                <th>Edad</th>
-                <th>Cédula</th>
-                <th>Ficha Médica</th>
-                <th>Número</th>
-            </tr>
+            <table id="tabla">
+                <caption> inscriptos</caption>
 
-        </table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Cédula</th>
+                    <th>Ficha Médica</th>
+                    <th>Número</th>
+                </tr>
 
+            </table>
 
-    </article>
 
-    <article>
+        </article>
 
-        <h4> Visualisar mapa: </h4>
+        <article>
 
+            <h4> Visualizar mapa: </h4>
 
-        <input type="radio" name="verMapa" id="carrRadio" class="radioCorredor">
-        <label for="carrRadio" class="radioCorredor">Por Carreras</label>
 
-        <input type="radio" name="verMapa" class="radioCorredor" id="inscripRadio">
-        <label for="inscripRadio" class="radioCorredor">Por Inscripcion</label>
+            <input type="radio" name="verMapa" id="carrRadio" class="radioCorredor">
+            <label for="carrRadio" class="radioCorredor">Por Carreras</label>
 
-    </article>
+            <input type="radio" name="verMapa" class="radioCorredor" id="inscripRadio">
+            <label for="inscripRadio" class="radioCorredor">Por Inscripcion</label>
 
-</section>
+        </article>
 
+    </section>
 
-<footer>
 
-    <p>Programación 1 - Obligatorio 1er semestre 2025 - Autores:</p>
+    <footer>
 
-    <p>Grupo M1B - Octavio Sosa(363131) - <span><a href="https://aulas.ort.edu.uy/user/view.php?id=68189&course=4095">Ir
-                hacia el perfil de estudiante</a></span></p>
-    <p>Grupo M1B - Alan Klein(358518) - <span><a href="https://aulas.ort.edu.uy/user/view.php?id=67422&course=4095">Ir
-                hacia el perfil de estudiante</a></span></p>
+        <p>Programación 1 - Obligatorio 1er semestre 2025 - Autores:</p>
 
-</footer>
+        <p>Grupo M1B - Octavio Sosa(363131) - <span><a
+                    href="https://aulas.ort.edu.uy/user/view.php?id=68189&course=4095">Ir
+                    hacia el perfil de estudiante</a></span></p>
+        <p>Grupo M1B - Alan Klein(358518) - <span><a
+                    href="https://aulas.ort.edu.uy/user/view.php?id=67422&course=4095">Ir
+                    hacia el perfil de estudiante</a></span></p>
+
+    </footer>
 
 </body>
 
