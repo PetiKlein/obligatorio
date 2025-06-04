@@ -33,97 +33,109 @@
         <h3> Datos </h3>
 
         <article>
-            <h4> Carreras </h4>
+
+            <form action="">
+                <h4> Carreras </h4>
 
 
-            <label for="nomTxt">Nombre:</label>
-            <input type="text" id="nomTxt" required>
+                <label for="nomTxt">Nombre:</label>
+                <input type="text" id="nomTxt" required>
 
-            <label for="selectDep"> Departamento:</label>
-            <select id="selectDep">
-                <option value="Montevideo">Montevideo</option>
-                <option value="Colonia">Colonia del Sacramento</option>
-                <option value="Canelones">Canelones</option>
-            </select>
+                <label for="selectDep"> Departamento:</label>
+                <select id="selectDep">
+                    <option value="Montevideo">Montevideo</option>
+                    <option value="Colonia">Colonia del Sacramento</option>
+                    <option value="Canelones">Canelones</option>
+                </select>
 
-            <label for="FechaCarr">Fecha:</label>
-            <input id="FechaCarr" type="date" required>
+                <label for="FechaCarr">Fecha:</label>
+                <input id="FechaCarr" type="date" required>
 
-            <label for="CupoCarr"> Cupo:</label>
-            <input type="number" id="CupoCarr" required>
-            <input type="button" class="btnInputs" id="btnAgregarC" value="Agregar Carrera">
+                <label for="CupoCarr"> Cupo:</label>
+                <input type="number" id="CupoCarr" required>
+                <input type="submit" class="btnInputs" id="btnAgregarC" value="Agregar Carrera">
 
-        </article>
-
-
-        <article>
-            <h4>Patrocinadores</h4>
-
-            <label for="nomPat">Nombre:</label>
-            <input type="text" id="nomPat" required>
-
-            <label for="rubPat">Rubro:</label>
-            <select id="rubPat">
-                <option value="alimenticio">Alimenticio</option>
-                <option value="ropa">Ropa</option>
-                <option value="salud">Salud</option>
-            </select>
-
-            <label>Carreras:</label>
-
-
-            <select id="carreraSelect" multiple>
-
-            </select>
-
-
-            <input type="button" class="btnInputs" value="Agregar/Actualizar patrocinador">
-
-
-        </article>
-
-        <article>
-            <h4> Corredores</h4>
-
-            <label for="compNom">Nombre:</label>
-            <input type="text" id="compNom" required>
-
-            <label for="compEdad">Edad:</label>
-            <input type="number" id="compEdad" required>
-
-            <label for="compCed">Cedula:</label>
-            <input type="number" id="compCed" required>
-
-
-            <label for="fechaVenc">Fecha de vencimiento de ficha medica:</label>
-            <input id="fechaVenc" class="bajaRenglon" type="date" required>
-
-            <label class="radioCorredor">Tipo de corredor :</label>
-
-            <input type="radio" id="elite" class="radioCorredor" name="radioDeportista">
-            <label for="elite" class="radioCorredor">Deportista de elite</label>
-
-            <input type="radio" id="comun" class="radioCorredor" name="radioDeportista" checked>
-            <label for="comun" class="radioCorredor">Deportista comun</label>
-
-            <input type="button" class="btnInputs" value="Agregar Corredor">
-
-
+            </form>
         </article>
 
 
         <article>
 
-            <h4>Inscripciones</h4>
+            <form action="">
 
-            <label for="nomCorredores">Corredores</label>
-            <select id="nomCorredores"> </select>
+                <h4>Patrocinadores</h4>
 
-            <label for="nomCarreras">Carreras:</label>
-            <select id="nomCarreras"> </select>
+                <label for="nomPat">Nombre:</label>
+                <input type="text" id="nomPat" required>
 
-            <input type="button" class="btnInputs" value="Inscribir">
+                <label for="rubPat">Rubro:</label>
+                <select id="rubPat">
+                    <option value="alimenticio">Alimenticio</option>
+                    <option value="ropa">Ropa</option>
+                    <option value="salud">Salud</option>
+                </select>
 
+                <label>Carreras:</label>
+
+
+                <select id="carreraSelect" multiple>
+
+                </select>
+
+
+                <input type="submit" class="btnInputs" value="Agregar/Actualizar patrocinador">
+
+
+            </form>
+        </article>
+
+        <article>
+
+            <form action="">
+                <h4> Corredores</h4>
+
+                <label for="compNom">Nombre:</label>
+                <input type="text" id="compNom" required>
+
+                <label for="compEdad">Edad:</label>
+                <input type="number" id="compEdad" required>
+
+                <label for="compCed">Cedula:</label>
+                <input type="number" id="compCed" required>
+
+
+                <label for="fechaVenc">Fecha de vencimiento de ficha medica:</label>
+                <input id="fechaVenc" class="bajaRenglon" type="date" required>
+
+                <label class="radioCorredor">Tipo de corredor :</label>
+
+                <input type="radio" id="elite" class="radioCorredor" name="radioDeportista">
+                <label for="elite" class="radioCorredor">Deportista de elite</label>
+
+                <input type="radio" id="comun" class="radioCorredor" name="radioDeportista" checked>
+                <label for="comun" class="radioCorredor">Deportista comun</label>
+
+                <input type="submit" class="btnInputs" value="Agregar Corredor">
+
+            </form>
+
+        </article>
+
+
+        <article>
+
+            <form action="">
+                <h4>Inscripciones</h4>
+
+                <label for="nomCorredores">Corredores</label>
+                <select id="nomCorredores"> </select>
+
+                <label for="nomCarreras">Carreras:</label>
+                <select id="nomCarreras"> </select>
+
+                <input type="submit" class="btnInputs" value="Inscribir">
+
+            </form>
 
         </article>
     </section>
