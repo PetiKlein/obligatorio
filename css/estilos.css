@@ -1,8 +1,6 @@
 /* 
   Autores: Octavio Sosa (363131) - Alan Klein(358518)
-  Fecha: 29/05/2025 
-  
-  */
+*/
 
 header {
 
@@ -44,6 +42,26 @@ article {
 #carreraSelect {
 
     width: 70px;
+
+}
+
+.botonSeleccionado {
+
+    border-radius: 10px;
+    background-color: #187498;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+.ver {
+
+    border-radius: 10px;
+    background-color: #00F26D;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    cursor: pointer;
 
 }
 
@@ -90,14 +108,15 @@ label {
 }
 
 table {
-  border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 th {
-  border: 3px solid black;
+    border: 3px solid black;
 
 
 }
+
 footer {
     border-radius: 10px;
     text-align: center;
