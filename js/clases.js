@@ -138,3 +138,18 @@ class Sistema {
 
     }
 }
+
+
+/* 
+
+TERMINAR FUNCION INSCRIBIR, ME QUEDE EN LA PARTE DE ORDENAR LOS SELECT  (ya eccho)
+
+FALTA HACER VALIDACIONES DE FECHA DE VENCIMIENTO Y CUPO etc.............
+#
+#
+#
+#
+#
+----------
+
+*/
