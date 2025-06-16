@@ -41,7 +41,7 @@ article {
 
 #carreraSelect {
 
-    width: 70px;
+    width: auto;
 
 }
 
@@ -67,7 +67,7 @@ article {
 
 select {
 
-    width: 100px;
+    width: auto;
 }
 
 .bajaRenglon {

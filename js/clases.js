@@ -12,41 +12,129 @@ class Carrera {
         this.cupo = cupo;
     }
     toString() {
-        return this.nombre + " " + this.departamento + " (" + this.fecha + ")" + this.cupo + "";
+        return " " + this.nombre + " " + this.departamento + " " + this.fecha + " " + this.cupo;
+    }
+}
+
+class Patrocinador {
+
+    constructor(nom, rub) {
+
+        this.nombre = nom;
+        this.rubro = rub;
+
+    }
+    toString() {
+        return " " + this.nombre + " " + this.rubro;
     }
 }
 
 class Corredor {
 
+    constructor(nom, edad, ci, fechVenc, tipoDep) {
+
+        this.nombre = nom;
+        this.edad = edad;
+        this.cedula = ci;
+        this.fechVenc = fechVenc;
+        this.tipoDepor = tipoDep;
+
+    }
+    toString() {
+
+        return " " + this.nombre + " " + this.edad + " " + this.cedula + " " + this.fechVenc + " " + this.tipoDepor;
+    }
+
 }
 
 class Inscripcion {
 
-}
+    constructor(corr, carr) {
 
-class Patrocinador {
+        this.corredor = corr;
+        this.carrera = carr;
 
-    
+
+    }
+    toString() {
+
+        return " " + this.corredor + " " + this.carrera + " " + this.cedula + " " + this.fechVenc + " " + this.tipoDepor;
+    }
 }
 
 class Sistema {
-    constructor(){
+
+    constructor() {
+
         this.carreras = [];
+        this.patrocinadores = [];
         this.corredores = [];
         this.inscripciones = [];
-        this.patrocinadores = []; 
+
     }
-        agregarCarrera(carrera){
+    agregarCarrera(carrera) {
         this.carreras.push(carrera);
     }
 
-     carreraExiste(carr){
+    mostrarCarreras() {
+
+        return this.carreras;
+
+    }
+
+    mostrarCorredores() {
+
+        return this.corredores;
+
+    }
+
+    carreraExiste(carr) {
         let existe = false;
-        for (let i=0; i<this.carreras.length && !existe; i++){
-            if (this.carreras[i].nombre == carr){
+        for (let i = 0; i < this.carreras.length && !existe; i++) {
+            if (this.carreras[i].nombre == carr) {
                 existe = true;
             }
         }
         return existe;
+    }
+
+    agregarPatrocinador(patr) {
+
+        this.patrocinadores.push(patr);
+
+    }
+
+    patrocinadorExiste(patr) {
+
+        for (let i = 0; i < this.patrocinadores.length; i++) {
+            if (this.patrocinadores[i].nombre === patr.nombre) {
+                this.patrocinadores[i].rubro = patr.rubro;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    agregarCorredor(corr) {
+
+        this.corredores.push(corr);
+
+    }
+
+    cedulaCorredorExiste(corr) {
+
+        let existe = false;
+        for (let i = 0; i < this.corredores.length && !existe; i++) {
+            if (this.corredores[i].cedula == corr.cedula) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
+    agregarInscripcion(insc) {
+
+        this.inscripciones.push(insc);
+
     }
 }

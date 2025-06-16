@@ -45,25 +45,25 @@
 
                 <label for="selectDep"> Departamento:</label>
                 <select id="selectDep">
-                    <option value="Montevideo">Montevideo</option>
-                    <option value="Canelones">Canelones</option>
-                    <option value="Maldonado">Maldonado</option>
-                    <option value="Rocha">Rocha</option>
-                    <option value="TreintayTres">Treinta y Tres</option>
-                    <option value="CerroLargo">Cerro Largo</option>
-                    <option value="Rivera">Rivera</option>
-                    <option value="Artigas">Artigas</option>
-                    <option value="Salto">Salto</option>
-                    <option value="Paysandu">Paysandú</option>
-                    <option value="RioNregro">Río Negro</option>
-                    <option value="Soriano">Soriano</option>
-                    <option value="Colonia">Colonia</option>
-                    <option value="SanJose">San José</option>
-                    <option value="Flores">Flores</option>
-                    <option value="Florida">Florida</option>
-                    <option value="Lavalleja">Lavalleja</option>
-                    <option value="Durazno">Durazno</option>
-                    <option value="Tacuarembo">Tacuarembó</option>
+                    <option value="1">Montevideo</option>
+                    <option value="2">Canelones</option>
+                    <option value="3">Maldonado</option>
+                    <option value="4">Rocha</option>
+                    <option value="5">Treinta y Tres</option>
+                    <option value="6">Cerro Largo</option>
+                    <option value="7">Rivera</option>
+                    <option value="8">Artigas</option>
+                    <option value="9">Salto</option>
+                    <option value="10">Paysandú</option>
+                    <option value="11">Río Negro</option>
+                    <option value="12">Soriano</option>
+                    <option value="13">Colonia</option>
+                    <option value="14">San José</option>
+                    <option value="15">Flores</option>
+                    <option value="16">Florida</option>
+                    <option value="17">Lavalleja</option>
+                    <option value="18">Durazno</option>
+                    <option value="19">Tacuarembó</option>
 
                 </select>
 
@@ -71,7 +71,7 @@
                 <input id="FechaCarr" type="date" required>
 
                 <label for="CupoCarr"> Cupo:</label>
-                <input type="number" id="CupoCarr" required>
+                <input type="number" id="CupoCarr" max="1000" value="30" required>
                 <input type="submit" class="btnInputs" id="btnAgregarC" value="Agregar Carrera">
 
             </form>
@@ -89,20 +89,25 @@
 
                 <label for="rubPat">Rubro:</label>
                 <select id="rubPat">
-                    <option value="alimenticio">Alimenticio</option>
-                    <option value="ropa">Ropa</option>
-                    <option value="salud">Salud</option>
+                    <option value="1">Alimenticio</option>
+                    <option value="2">Banco</option>
+                    <option value="3">Bebidas</option>
+                    <option value="4">Farmacia</option>
+                    <option value="5">Ropa Deportiva</option>
+                    <option value="6">Estatal</option>
+                    <option value="7">General</option>
+
                 </select>
 
                 <label>Carreras:</label>
 
 
-                <select id="carreraSelect" multiple>
+                <select id="carreraSelect" multiple required>
 
                 </select>
 
 
-                <input type="submit" class="btnInputs" value="Agregar/Actualizar patrocinador">
+                <input type="submit" id="btnAgregarP" class="btnInputs" value="Agregar/Actualizar patrocinador">
 
 
             </form>
@@ -117,24 +122,24 @@
                 <input type="text" id="compNom" required>
 
                 <label for="compEdad">Edad:</label>
-                <input type="number" id="compEdad" required>
+                <input type="number" id="compEdad" min="18" required>
 
                 <label for="compCed">Cedula:</label>
                 <input type="number" id="compCed" required>
 
 
-                <label for="fechaVenc">Fecha de vencimiento de ficha medica:</label>
-                <input id="fechaVenc" class="bajaRenglon" type="date" required>
+                <label for="fechaVenComp">Fecha de vencimiento de ficha medica:</label>
+                <input id="fechaVenComp" class="bajaRenglon" type="date" required>
 
                 <label class="radioCorredor">Tipo de corredor :</label>
 
-                <input type="radio" id="elite" class="radioCorredor" name="radioDeportista">
+                <input type="radio" id="elite" class="radioCorredor" name="radioDeportista" value="Elite">
                 <label for="elite" class="radioCorredor">Deportista de elite</label>
 
-                <input type="radio" id="comun" class="radioCorredor" name="radioDeportista" checked>
+                <input type="radio" id="comun" class="radioCorredor" name="radioDeportista" value="Comun" checked>
                 <label for="comun" class="radioCorredor">Deportista comun</label>
 
-                <input type="submit" class="btnInputs" value="Agregar Corredor">
+                <input type="submit" class="btnInputs" id="btnAgregarCorr" value="Agregar Corredor">
 
             </form>
 
@@ -152,7 +157,7 @@
                 <label for="nomCarreras">Carreras:</label>
                 <select id="nomCarreras"> </select>
 
-                <input type="submit" class="btnInputs" value="Inscribir">
+                <input type="submit" class="btnInputs" value="Inscribir" id="btnInscribir">
 
             </form>
 
