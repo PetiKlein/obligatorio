@@ -137,19 +137,17 @@ class Sistema {
         this.inscripciones.push(insc);
 
     }
+
+    ordenarCarrXNom() {
+
+        return this.carreras.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+    }
+
+    ordenarCorrXNom() {
+
+          return this.corredores.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+    }
 }
 
-
-/* 
-
-TERMINAR FUNCION INSCRIBIR, ME QUEDE EN LA PARTE DE ORDENAR LOS SELECT  (ya eccho)
-
-FALTA HACER VALIDACIONES DE FECHA DE VENCIMIENTO Y CUPO etc.............
-#
-#
-#
-#
-#
-----------
-
-*/

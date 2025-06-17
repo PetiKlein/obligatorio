@@ -52,7 +52,9 @@ function mostrarSeccion(e) {
 
 }
 
-function agregarCarrera() {
+function agregarCarrera(event) {
+
+    event.preventDefault();
 
     if (document.getElementById("formCarreras").reportValidity()) {
 
@@ -89,24 +91,6 @@ function mostrarSelect() {
     }
 }
 
-
-
-/* 
-
-TERMINAR FUNCION INSCRIBIR, ME QUEDE EN LA PARTE DE ORDENAR LOS SELECT  (ya eccho)
-
-FALTA HACER VALIDACIONES DE FECHA DE VENCIMIENTO Y CUPO etc.............
-#
-#
-#
-#
-#
-----------
-
-*/
-
-
-
 function datosInsc() {
 
     let selectCorr = document.getElementById("nomCorredores");
@@ -115,12 +99,8 @@ function datosInsc() {
     selectCorr.innerHTML = "";
     selectCarr.innerHTML = "";
 
-    let corr = sistema.mostrarCorredores();
-    let carr = sistema.mostrarCarreras();
-
-    corr.sort((a, b) => a.nombre.localeCompare(b.nombre));
-    carr.sort((a, b) => a.nombre.localeCompare(b.nombre));
-
+    let corr = sistema.ordenarCorrXNom();
+    let carr = sistema.ordenarCarrXNom();
 
     for (let i = 0; i < corr.length; i++) {
         let nodo = document.createElement("option");
@@ -137,7 +117,10 @@ function datosInsc() {
 
 }
 
-function agregarPatrocinador() {
+function agregarPatrocinador(event) {
+
+    event.preventDefault();
+
 
     if (document.getElementById("formPatrocinadores").reportValidity()) {
 
@@ -163,7 +146,9 @@ function agregarPatrocinador() {
 
 }
 
-function agregarCorredor() {
+function agregarCorredor(event) {
+
+    event.preventDefault();
 
     if (document.getElementById("formCorredores").reportValidity()) {
 
@@ -196,14 +181,42 @@ function agregarCorredor() {
 
 }
 
-function agregarInscripcion() {
+function agregarInscripcion(event) {
 
-    let corredor = document.getElementById("nomCorredores").value;
-    let carrera = document.getElementById("nomCarreras").value;
+    event.preventDefault();
+
+    let corredor = sistema.mostrarCorredores();
+    let carrera = sistema.mostrarCarreras();
+
+
+
+    let fechaCarrera = new Date(carrera.fecha);
+    let fechaVencimiento = new Date(corredor.fechVenc);
+
+    
+    if (fechaVencimiento < fechaCarrera) {
+
+        alert(`No se puede inscribir ya que su fecha de vencimiento esta o estara vencida para la fecha {$corredor.fechaVenc}`);
+
+        return;
+    }
+
+
+    if (carrera.cupo <= 0) {
+
+        alert("Ya no quedan cupos para inscribirse en la carrera.");
+
+        return;
+
+    }
 
 
     let insc = new Inscripcion(corredor, carrera);
     sistema.agregarInscripcion(insc);
+    carrera.cupo-1;
+
+    alert("Inscripción realizada correctamente.");
+
 
 
 
