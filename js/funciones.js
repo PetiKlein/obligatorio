@@ -127,6 +127,7 @@ function agregarPatrocinador(event) {
         let nombre = document.getElementById("nomPat").value;
         let rubro = document.getElementById("rubPat").value;
 
+
         let patr = new Patrocinador(nombre, rubro);
 
         if (sistema.patrocinadorExiste(patr)) {
@@ -185,18 +186,19 @@ function agregarInscripcion(event) {
 
     event.preventDefault();
 
-    let corredor = sistema.mostrarCorredores();
-    let carrera = sistema.mostrarCarreras();
+    let nombreCorredor = document.getElementById("nomCorredores").value;
+    let nombreCarrera = document.getElementById("nomCarreras").value;
 
-
+    let corredor = sistema.corredores.find(co => `${co.nombre} -- ${co.cedula}` === nombreCorredor);
+    let carrera = sistema.carreras.find(ca => ca.nombre === nombreCarrera);
 
     let fechaCarrera = new Date(carrera.fecha);
     let fechaVencimiento = new Date(corredor.fechVenc);
 
-    
+
     if (fechaVencimiento < fechaCarrera) {
 
-        alert(`No se puede inscribir ya que su fecha de vencimiento esta o estara vencida para la fecha {$corredor.fechaVenc}`);
+        alert(`No se puede inscribir ya que su fecha de vencimiento esta o estara vencida para la fecha `);
 
         return;
     }
@@ -211,13 +213,11 @@ function agregarInscripcion(event) {
     }
 
 
-    let insc = new Inscripcion(corredor, carrera);
+    let insc = new Inscripcion(nombreCorredor, nombreCarrera);
     sistema.agregarInscripcion(insc);
-    carrera.cupo-1;
+    carrera.cupo -= 1;
 
     alert("Inscripción realizada correctamente.");
-
-
 
 
 }
