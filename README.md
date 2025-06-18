@@ -11,7 +11,7 @@
 <li>Terminar el agregar inscripcion//// correjirlo</li>
 <li>Empezar con las estadisticas</li>
 <li>Que patrocinador guarde las carreras</li>
-<li></li>
+<li> hacer que inscripcion imprima PDF</li>
 <li></li>
 <li></li>
 
