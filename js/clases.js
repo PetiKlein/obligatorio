@@ -89,7 +89,9 @@ class Sistema {
     }
 
     carreraExiste(carr) {
+        
         let existe = false;
+
         for (let i = 0; i < this.carreras.length && !existe; i++) {
             if (this.carreras[i].nombre == carr) {
                 existe = true;
@@ -124,6 +126,7 @@ class Sistema {
     cedulaCorredorExiste(corr) {
 
         let existe = false;
+
         for (let i = 0; i < this.corredores.length && !existe; i++) {
             if (this.corredores[i].cedula == corr.cedula) {
                 existe = true;

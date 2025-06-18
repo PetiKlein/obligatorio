@@ -10,21 +10,19 @@ function inicio() {
 
     document.getElementById("datos").addEventListener("click", mostrarSeccion);
     document.getElementById("estadisticas").addEventListener("click", mostrarSeccion);
-
-
-    document.getElementById("sectionEstadisticas").style.display = "none";
-    document.getElementById("sectionDatos").style.display = "block";
-
     document.getElementById("btnAgregarC").addEventListener("click", agregarCarrera);
     document.getElementById("btnAgregarP").addEventListener("click", agregarPatrocinador);
     document.getElementById("btnAgregarCorr").addEventListener("click", agregarCorredor);
     document.getElementById("btnInscribir").addEventListener("click", agregarInscripcion);
 
+    
+    document.getElementById("sectionEstadisticas").style.display = "none";
+    document.getElementById("sectionDatos").style.display = "block";
 }
 
-function mostrarSeccion(e) {
+function mostrarSeccion(event) {
 
-    if (e.target.id === "datos") {
+    if (event.target.id === "datos") {
 
         document.getElementById("sectionEstadisticas").style.display = "none";
         document.getElementById("sectionDatos").style.display = "block";
@@ -90,6 +88,9 @@ function mostrarSelect() {
         select.appendChild(nodo);
     }
 }
+
+
+// Muestra los corredores y carreras en la seccion inscripciones en los select con inner.HTML
 
 function datosInsc() {
 
