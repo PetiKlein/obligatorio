@@ -15,7 +15,7 @@ function inicio() {
     document.getElementById("btnAgregarCorr").addEventListener("click", agregarCorredor);
     document.getElementById("btnInscribir").addEventListener("click", agregarInscripcion);
 
-    
+
     document.getElementById("sectionEstadisticas").style.display = "none";
     document.getElementById("sectionDatos").style.display = "block";
 }
@@ -218,7 +218,7 @@ function agregarInscripcion(event) {
     sistema.agregarInscripcion(insc);
     carrera.cupo -= 1;
 
-    alert("Inscripción realizada correctamente.");
+    alert(`Inscripción realizada correctamente.\nCorredor: ${corredor.nombre}\n Cedula: ${corredor.cedula}\n Edad: ${corredor.edad} \n Tipo de corredor: ${corredor.tipoDepor}\n Numero de inscripcion: ${carrera.cupo+1}  \n\n Carrera: ${carrera.nombre} \n  Fecha: ${carrera.fecha} \n\n Patrocinadores: ${} \n Rubro: ${}`);
 
 
 }
