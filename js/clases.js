@@ -18,14 +18,15 @@ class Carrera {
 
 class Patrocinador {
 
-    constructor(nom, rub) {
+    constructor(nom, rub, carr) {
 
         this.nombre = nom;
         this.rubro = rub;
+        this.carreras = carr;
 
     }
     toString() {
-        return " " + this.nombre + " " + this.rubro;
+        return " " + this.nombre + " " + this.rubro + " " + this.carreras;
     }
 }
 
@@ -89,7 +90,7 @@ class Sistema {
     }
 
     carreraExiste(carr) {
-        
+
         let existe = false;
 
         for (let i = 0; i < this.carreras.length && !existe; i++) {
@@ -98,6 +99,11 @@ class Sistema {
             }
         }
         return existe;
+    }
+
+    mostrarPatrocinadores() {
+
+        return this.patrocinadores;
     }
 
     agregarPatrocinador(patr) {
@@ -111,6 +117,8 @@ class Sistema {
         for (let i = 0; i < this.patrocinadores.length; i++) {
             if (this.patrocinadores[i].nombre === patr.nombre) {
                 this.patrocinadores[i].rubro = patr.rubro;
+                this.patrocinadores[i].carreras = patr.carreras
+                
                 return true;
             }
         }
@@ -149,7 +157,7 @@ class Sistema {
 
     ordenarCorrXNom() {
 
-          return this.corredores.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        return this.corredores.sort((a, b) => a.nombre.localeCompare(b.nombre));
 
     }
 }

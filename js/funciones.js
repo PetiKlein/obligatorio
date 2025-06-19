@@ -57,7 +57,8 @@ function agregarCarrera(event) {
     if (document.getElementById("formCarreras").reportValidity()) {
 
         let nombre = document.getElementById("nomTxt").value;
-        let depto = document.getElementById("selectDep").value;
+        let depto = document.getElementById("selectDep").options[document.getElementById("selectDep").selectedIndex].text;
+
         let fecha = document.getElementById("FechaCarr").value;
         let cupo = parseInt(document.getElementById("CupoCarr").value);
 
@@ -88,7 +89,6 @@ function mostrarSelect() {
         select.appendChild(nodo);
     }
 }
-
 
 // Muestra los corredores y carreras en la seccion inscripciones en los select con inner.HTML
 
@@ -122,14 +122,21 @@ function agregarPatrocinador(event) {
 
     event.preventDefault();
 
-
     if (document.getElementById("formPatrocinadores").reportValidity()) {
 
         let nombre = document.getElementById("nomPat").value;
-        let rubro = document.getElementById("rubPat").value;
+        let rubro = document.getElementById("rubPat").options[document.getElementById("rubPat").selectedIndex].text;
+        let carrerasSelect = document.getElementById("carreraSelect");
 
+        let carreras = [];
 
-        let patr = new Patrocinador(nombre, rubro);
+        for (let opciones of carrerasSelect.selectedOptions) {
+
+            carreras.push(opciones.value);
+
+        }
+
+        let patr = new Patrocinador(nombre, rubro, carreras);
 
         if (sistema.patrocinadorExiste(patr)) {
 
@@ -190,8 +197,33 @@ function agregarInscripcion(event) {
     let nombreCorredor = document.getElementById("nomCorredores").value;
     let nombreCarrera = document.getElementById("nomCarreras").value;
 
+    //  .find() busca un elemento en el array que cumpla la condicion de que sea exactamente igual la variable de arriba nombreCorredor
+
     let corredor = sistema.corredores.find(co => `${co.nombre} -- ${co.cedula}` === nombreCorredor);
     let carrera = sistema.carreras.find(ca => ca.nombre === nombreCarrera);
+
+
+    let patrocinadores = "";
+
+    let existe = false;
+
+    for (let i = 0; i < sistema.patrocinadores.length; i++) {
+
+        let p = sistema.patrocinadores[i];
+
+
+        if (p.carreras.includes(nombreCarrera)) {
+            patrocinadores += `${p.nombre} \n Rubro: ${p.rubro}\n \n`;
+            existe = true;
+        }
+
+    }
+
+    if (!existe) {
+
+        patrocinadores = "No hay patrocinadores";
+    }
+
 
     let fechaCarrera = new Date(carrera.fecha);
     let fechaVencimiento = new Date(corredor.fechVenc);
@@ -203,7 +235,6 @@ function agregarInscripcion(event) {
 
         return;
     }
-
 
     if (carrera.cupo <= 0) {
 
@@ -218,7 +249,7 @@ function agregarInscripcion(event) {
     sistema.agregarInscripcion(insc);
     carrera.cupo -= 1;
 
-    alert(`Inscripción realizada correctamente.\nCorredor: ${corredor.nombre}\n Cedula: ${corredor.cedula}\n Edad: ${corredor.edad} \n Tipo de corredor: ${corredor.tipoDepor}\n Numero de inscripcion: ${carrera.cupo+1}  \n\n Carrera: ${carrera.nombre} \n  Fecha: ${carrera.fecha} \n\n Patrocinadores: ${} \n Rubro: ${}`);
+    alert(`Inscripción realizada correctamente.\n\nCorredor: ${corredor.nombre}\nCedula: ${corredor.cedula}\nEdad: ${corredor.edad}\nTipo de corredor: ${corredor.tipoDepor}\nNumero de inscripcion: ${carrera.cupo + 1}  \n\nCarrera: ${carrera.nombre} \nDepartamento: ${carrera.departamento} \nFecha: ${carrera.fecha} \n\nPatrocinadores: ${patrocinadores}`);
 
 
 }
