@@ -145,6 +145,8 @@ function agregarPatrocinador(event) {
         } else {
 
             sistema.agregarPatrocinador(patr);
+            
+            alert("Patrocinador agregado exitosamente.");
 
         }
 
@@ -250,6 +252,5 @@ function agregarInscripcion(event) {
     carrera.cupo -= 1;
 
     alert(`Inscripción realizada correctamente.\n\nCorredor: ${corredor.nombre}\nCedula: ${corredor.cedula}\nEdad: ${corredor.edad}\nTipo de corredor: ${corredor.tipoDepor}\nNumero de inscripcion: ${carrera.cupo + 1}  \n\nCarrera: ${carrera.nombre} \nDepartamento: ${carrera.departamento} \nFecha: ${carrera.fecha} \n\nPatrocinadores: ${patrocinadores}`);
-
 
 }

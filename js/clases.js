@@ -73,6 +73,7 @@ class Sistema {
         this.inscripciones = [];
 
     }
+
     agregarCarrera(carrera) {
         this.carreras.push(carrera);
     }
@@ -118,7 +119,7 @@ class Sistema {
             if (this.patrocinadores[i].nombre === patr.nombre) {
                 this.patrocinadores[i].rubro = patr.rubro;
                 this.patrocinadores[i].carreras = patr.carreras
-                
+
                 return true;
             }
         }
