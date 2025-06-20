@@ -84,6 +84,22 @@ class Sistema {
 
     }
 
+    corredorInscripto(corr, carr) {
+
+        let inscripto = false;
+
+        for (let i = 0; i < this.inscripciones.length && !inscripto; i++) {
+
+            if (this.inscripciones[i].corredor === corr && this.inscripciones[i].carrera === carr) {
+
+                inscripto = true;
+
+            }
+        }
+
+        return inscripto;
+    }
+
     mostrarCorredores() {
 
         return this.corredores;

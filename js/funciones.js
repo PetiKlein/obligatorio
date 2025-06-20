@@ -145,7 +145,7 @@ function agregarPatrocinador(event) {
         } else {
 
             sistema.agregarPatrocinador(patr);
-            
+
             alert("Patrocinador agregado exitosamente.");
 
         }
@@ -215,7 +215,7 @@ function agregarInscripcion(event) {
 
 
         if (p.carreras.includes(nombreCarrera)) {
-            patrocinadores += `${p.nombre} \n Rubro: ${p.rubro}\n \n`;
+            patrocinadores += `${p.nombre}\nRubro: ${p.rubro}\n \n`;
             existe = true;
         }
 
@@ -233,7 +233,14 @@ function agregarInscripcion(event) {
 
     if (fechaVencimiento < fechaCarrera) {
 
-        alert(`No se puede inscribir ya que su fecha de vencimiento esta o estara vencida para la fecha `);
+        alert(`No se puede inscribir ya que su fecha de vencimiento esta o estara vencida para la fecha.\nFecha de vencimiento de ficha medica: ${corredor.fechVenc} \nFecha de la carrera: ${carrera.fecha}`);
+
+        return;
+    }
+
+    if (sistema.corredorInscripto(corredor, carrera)) {
+
+        alert("No se puede inscribir al mismo corredor 2 veces en la misma carrera.");
 
         return;
     }
@@ -247,10 +254,39 @@ function agregarInscripcion(event) {
     }
 
 
-    let insc = new Inscripcion(nombreCorredor, nombreCarrera);
+    let insc = new Inscripcion(corredor, carrera);
     sistema.agregarInscripcion(insc);
     carrera.cupo -= 1;
 
     alert(`Inscripción realizada correctamente.\n\nCorredor: ${corredor.nombre}\nCedula: ${corredor.cedula}\nEdad: ${corredor.edad}\nTipo de corredor: ${corredor.tipoDepor}\nNumero de inscripcion: ${carrera.cupo + 1}  \n\nCarrera: ${carrera.nombre} \nDepartamento: ${carrera.departamento} \nFecha: ${carrera.fecha} \n\nPatrocinadores: ${patrocinadores}`);
 
+
+    // Parte imprimir PDF
+
+    let impresion = {
+
+        Corredor: corredor.nombre,
+        Cedula: corredor.cedula,
+        Edad: corredor.edad,
+        Tipo_de_corredor: corredor.tipoDepor,
+        Numero_de_inscripcion: carrera.cupo + 1,
+        Carrera: carrera.nombre,
+        Departamento: carrera.departamento,
+        Fecha: carrera.fecha,
+        Patrocinadores: patrocinadores
+
+    }
+
+
+    // Convierte el objeto impresion a formato legible
+
+    let texto = JSON.stringify(impresion, null, 2);
+
+
+    let { jsPDF } = window.jspdf;
+    let doc = new jsPDF();
+
+    doc.text(texto, 10, 10);
+
+    doc.save("datos.pdf");
 }
