@@ -18,6 +18,13 @@ function inicio() {
 
     document.getElementById("sectionEstadisticas").style.display = "none";
     document.getElementById("sectionDatos").style.display = "block";
+
+
+    // Hace que el txtbox cedula de corredor solo permita numeros y no letras 
+
+    document.getElementById("compCed").addEventListener("input", function () { this.value = this.value.replace(/[^0-9]/g, ''); });
+
+    datosGenerales();
 }
 
 function mostrarSeccion(event) {
@@ -140,7 +147,7 @@ function agregarPatrocinador(event) {
 
         if (sistema.patrocinadorExiste(patr)) {
 
-            alert("Patrocinador actualizado");
+            alert("Patrocinador actualizado.");
 
         } else {
 
@@ -215,7 +222,7 @@ function agregarInscripcion(event) {
 
 
         if (p.carreras.includes(nombreCarrera)) {
-            patrocinadores += `${p.nombre}\nRubro: ${p.rubro}\n \n`;
+            patrocinadores += `\nNombre: ${p.nombre}\nRubro: ${p.rubro}\n`;
             existe = true;
         }
 
@@ -257,11 +264,17 @@ function agregarInscripcion(event) {
     let insc = new Inscripcion(corredor, carrera);
     sistema.agregarInscripcion(insc);
     carrera.cupo -= 1;
+    carrera.inscriptos += 1;
 
     alert(`Inscripción realizada correctamente.\n\nCorredor: ${corredor.nombre}\nCedula: ${corredor.cedula}\nEdad: ${corredor.edad}\nTipo de corredor: ${corredor.tipoDepor}\nNumero de inscripcion: ${carrera.cupo + 1}  \n\nCarrera: ${carrera.nombre} \nDepartamento: ${carrera.departamento} \nFecha: ${carrera.fecha} \n\nPatrocinadores: ${patrocinadores}`);
 
 
     // Parte imprimir PDF
+
+    // Quita los saltos de linea para la impresion de el PDF
+
+    patrocinadores = patrocinadores.replace(/\n/g, " ");
+
 
     let impresion = {
 
@@ -289,4 +302,75 @@ function agregarInscripcion(event) {
     doc.text(texto, 10, 10);
 
     doc.save("datos.pdf");
+
+    datosGenerales();
+
+}
+
+// Parte de estadisticas
+
+function datosGenerales() {
+
+    // Promedio de inscriptos 
+
+    let promedio = document.getElementById("promInsc");
+    promedio.innerHTML = "";
+    let prom = sistema.promedioInscriptos();
+    let nodo = document.createElement("span");
+    nodo.innerHTML = prom;
+    promedio.appendChild(nodo);
+
+    // ul con las carreras con mas inscriptos
+
+    let listaCarrMasInsc = document.getElementById("ulCarrMasInsc");
+    listaCarrMasInsc.innerHTML = "";
+    let listaMasInsc = sistema.carrMasInsc();
+
+    if (listaMasInsc === "Sin Datos.") {
+
+        let nodo = document.createElement("li");
+        nodo.innerHTML = listaMasInsc;
+        listaCarrMasInsc.appendChild(nodo);
+
+    } else {
+
+        for (let nombreCarr of listaMasInsc) {
+            let nodo = document.createElement("li");
+            nodo.innerHTML = nombreCarr;
+            listaCarrMasInsc.appendChild(nodo);
+        }
+
+    }
+
+    // ul con las carreras sin inscriptos
+
+    let listaCarrSinInsc = document.getElementById("ulCarrSinInsc");
+    listaCarrSinInsc.innerHTML = "";
+    let listaSinInsc = sistema.carrSinInsc();
+
+    if (listaSinInsc === "Sin Datos.") {
+
+        let nodo = document.createElement("li");
+        nodo.innerHTML = listaSinInsc;
+        listaCarrSinInsc.appendChild(nodo);
+
+    } else {
+
+        for (let nombreCarr of listaSinInsc) {
+            let nodo = document.createElement("li");
+            nodo.innerHTML = nombreCarr;
+            listaCarrSinInsc.appendChild(nodo);
+        }
+
+    }
+
+    // Span porcentaje de corredores de elite
+
+    let porcentaje = document.getElementById("porcCorrElite");
+    porcentaje.innerHTML = "";
+    let porc = sistema.porcCorrElite();
+    let nodo2 = document.createElement("span");
+    nodo2.innerHTML = porc;
+    porcentaje.appendChild(nodo2);
+
 }

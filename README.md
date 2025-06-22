@@ -7,9 +7,6 @@
 
 <ul>
 
-<li>textbox cedula corredor</li>
-<li>Empezar con las estadisticas</li>
-<li> hacer que inscripcion imprima PDF</li>
-
+<li>Hacer parte de buscar corredores </li>
 
 </ul>

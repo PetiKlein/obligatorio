@@ -10,6 +10,7 @@ class Carrera {
         this.departamento = depto;
         this.fecha = fecha;
         this.cupo = cupo;
+        this.inscriptos = 0;
     }
     toString() {
         return " " + this.nombre + " " + this.departamento + " " + this.fecha + " " + this.cupo;
@@ -59,7 +60,7 @@ class Inscripcion {
     }
     toString() {
 
-        return " " + this.corredor + " " + this.carrera + " " + this.cedula + " " + this.fechVenc + " " + this.tipoDepor;
+        return " " + this.corredor + " " + this.carrera + " ";
     }
 }
 
@@ -175,6 +176,104 @@ class Sistema {
     ordenarCorrXNom() {
 
         return this.corredores.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+    }
+
+    promedioInscriptos() {
+
+        let contadorCarr = 0;
+
+        for (let i = 0; i < this.inscripciones.length; i++) {
+
+            contadorCarr++;
+
+        }
+
+        if (contadorCarr === 0) {
+
+            return "Sin Datos.";
+
+        }
+
+        let cantCarreras = this.carreras.length;
+        let promedio = (contadorCarr / cantCarreras).toFixed(2);
+
+        if (promedio == "0.00") {
+
+            return "Sin Datos.";
+        }
+
+        return promedio;
+    }
+
+    carrMasInsc() {
+
+        let mayorInsc = 0;
+        let carrMasInsc = [];
+
+        for (let carr of this.carreras) {
+
+            if (carr.inscriptos > mayorInsc) {
+                mayorInsc = carr.inscriptos;
+                carrMasInsc = [carr.nombre];
+            } else if (carr.inscriptos === mayorInsc) {
+                carrMasInsc.push(carr.nombre);
+            }
+        }
+
+        if (carrMasInsc.length === 0) {
+
+            return "Sin Datos.";
+
+        }
+
+        return carrMasInsc;
+
+    }
+
+    carrSinInsc() {
+
+        let carrSinInsc = [];
+
+        for (let carr of this.carreras) {
+
+            if (carr.inscriptos === 0) {
+                carrSinInsc.push(carr.nombre);
+            }
+        }
+
+        if (carrSinInsc.length === 0) {
+
+            return "Sin Datos.";
+
+        }
+
+        carrSinInsc.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+
+        return carrSinInsc;
+    }
+
+    porcCorrElite() {
+
+        let cantCorrElite = 0;
+
+        for (let corr of this.corredores) {
+
+            if (corr.tipoDepor === "Elite") {
+
+                cantCorrElite++;
+            }
+        }
+
+        let totalCorr = this.corredores.length;
+
+        if (totalCorr == 0) {
+            return "Sin Datos.";
+        }
+
+        let porcentaje = (cantCorrElite / totalCorr) * 100;
+
+        return porcentaje.toFixed(2) + "%";
 
     }
 }
