@@ -198,11 +198,6 @@ class Sistema {
 
     }
 
-    ordenarCarrXNum() {
-
-
-    }
-
     promedioInscriptos() {
 
         let contadorCarr = 0;

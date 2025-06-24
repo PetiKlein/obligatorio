@@ -464,7 +464,6 @@ function tableConsultaInsc() {
 
 google.charts.load('current', {
     'packages': ['geochart'],
-    // No necesitas API key
 });
 google.charts.setOnLoadCallback(drawRegionsMap);
 
