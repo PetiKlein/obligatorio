@@ -13,7 +13,10 @@
 
     <!-- Script para la impresion de PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
+
+    <!-- Mapa de google charts map -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
     <script src="js/clases.js"></script>
     <script src="js/funciones.js"></script>
 </head>
@@ -204,15 +207,15 @@
 
                 <label class="radioCorredor">Ordenar por:</label>
 
-                <input type="radio" name="ordenarPor" class="radioCorredor" id="nombreCorr" checked>
-                <label for="nombreCorr" class="radioCorredor">Nombre</label>
+                <input type="radio" name="ordenarPor" class="radioCorredor" id="radNomCorr" checked>
+                <label for="radNomCorr" class="radioCorredor">Nombre</label>
 
-                <input type="radio" name="ordenarPor" class="radioCorredor" id="numeroCorr">
-                <label for="numeroCorr" class="radioCorredor">Numero</label>
+                <input type="radio" name="ordenarPor" class="radioCorredor" id="radNumCorr">
+                <label for="radNumCorr" class="radioCorredor">Numero</label>
 
             </form>
 
-            <table id="tabla">
+            <table>
                 <caption> inscriptos</caption>
 
                 <tr>
@@ -222,8 +225,13 @@
                     <th>Ficha Médica</th>
                     <th>Número</th>
                 </tr>
+                <tBody id="tablaCorredores">
+
+                </tBody>
 
             </table>
+
+
 
 
         </article>
@@ -242,6 +250,9 @@
 
             </form>
 
+            <div id="mapa" ></div>
+
+
         </article>
 
     </section>
@@ -254,8 +265,8 @@
         <p>Grupo M1B - Octavio Sosa(363131) - <span><a
                     href="https://aulas.ort.edu.uy/user/view.php?id=68189&course=4095" target="_blank">Ir
                     hacia el perfil de estudiante</a></span></p>
-        <p>Grupo M1B - Alan Klein(358518) - <span><a
-                    href="https://aulas.ort.edu.uy/user/view.php?id=67422&course=4095" target="_blank">Ir
+        <p>Grupo M1B - Alan Klein(358518) - <span><a href="https://aulas.ort.edu.uy/user/view.php?id=67422&course=4095"
+                    target="_blank">Ir
                     hacia el perfil de estudiante</a></span></p>
 
     </footer>

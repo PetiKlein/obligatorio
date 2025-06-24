@@ -14,6 +14,10 @@ function inicio() {
     document.getElementById("btnAgregarP").addEventListener("click", agregarPatrocinador);
     document.getElementById("btnAgregarCorr").addEventListener("click", agregarCorredor);
     document.getElementById("btnInscribir").addEventListener("click", agregarInscripcion);
+    document.getElementById("radNomCorr").addEventListener("click", tableConsultaInsc);
+    document.getElementById("radNumCorr").addEventListener("click", tableConsultaInsc);
+    document.getElementById("consultaCarrera").addEventListener("click", tableConsultaInsc);
+
 
 
     document.getElementById("sectionEstadisticas").style.display = "none";
@@ -53,6 +57,10 @@ function mostrarSeccion(event) {
         document.getElementById("estadisticas").classList.remove("ver");
         document.getElementById("estadisticas").classList.add("botonSeleccionado");
 
+        datosGenerales();
+        selectConsultaInscriptos();
+        tableConsultaInsc();
+
     }
 
 }
@@ -68,6 +76,7 @@ function agregarCarrera(event) {
 
         let fecha = document.getElementById("FechaCarr").value;
         let cupo = parseInt(document.getElementById("CupoCarr").value);
+
 
         if (sistema.carreraExiste(nombre)) {
             alert("Esta carrera ya existe, pongale otro nombre");
@@ -266,7 +275,7 @@ function agregarInscripcion(event) {
     carrera.cupo -= 1;
     carrera.inscriptos += 1;
 
-    alert(`Inscripción realizada correctamente.\n\nCorredor: ${corredor.nombre}\nCedula: ${corredor.cedula}\nEdad: ${corredor.edad}\nTipo de corredor: ${corredor.tipoDepor}\nNumero de inscripcion: ${carrera.cupo + 1}  \n\nCarrera: ${carrera.nombre} \nDepartamento: ${carrera.departamento} \nFecha: ${carrera.fecha} \n\nPatrocinadores: ${patrocinadores}`);
+    alert(`Inscripción realizada correctamente.\n\nCorredor: ${corredor.nombre}\nCedula: ${corredor.cedula}\nEdad: ${corredor.edad}\nTipo de corredor: ${corredor.tipoDepor}\nNumero de inscripcion: ${carrera.inscriptos}  \n\nCarrera: ${carrera.nombre} \nDepartamento: ${carrera.departamento} \nFecha: ${carrera.fecha}\nCupo restante: ${carrera.cupo}\n\nPatrocinadores: ${patrocinadores}`);
 
 
     // Parte imprimir PDF
@@ -282,9 +291,10 @@ function agregarInscripcion(event) {
         Cedula: corredor.cedula,
         Edad: corredor.edad,
         Tipo_de_corredor: corredor.tipoDepor,
-        Numero_de_inscripcion: carrera.cupo + 1,
+        Numero_de_inscripcion: carrera.inscriptos,
         Carrera: carrera.nombre,
         Departamento: carrera.departamento,
+        Cupo_restante: carrera.cupo,
         Fecha: carrera.fecha,
         Patrocinadores: patrocinadores
 
@@ -295,6 +305,8 @@ function agregarInscripcion(event) {
 
     let texto = JSON.stringify(impresion, null, 2);
 
+
+    texto = texto.replace(/\"([^"]+)\"/g, '$1');
 
     let { jsPDF } = window.jspdf;
     let doc = new jsPDF();
@@ -373,4 +385,122 @@ function datosGenerales() {
     nodo2.innerHTML = porc;
     porcentaje.appendChild(nodo2);
 
+}
+
+function selectConsultaInscriptos() {
+
+    let selectCarr = document.getElementById("consultaCarrera");
+
+    selectCarr.innerHTML = "";
+
+    let carr = sistema.ordenarCarrXNom();
+
+
+    for (let i = 0; i < carr.length; i++) {
+
+        let nodo = document.createElement("option");
+        nodo.innerHTML = carr[i].nombre;
+        selectCarr.appendChild(nodo);
+
+    }
+
+}
+
+
+function tableConsultaInsc() {
+
+    let tabla = document.getElementById("tablaCorredores");
+    let carreraSeleccionada = document.getElementById("consultaCarrera").value;
+
+    let inscOrdenadas;
+
+    if (document.getElementById("radNomCorr").checked) {
+
+        inscOrdenadas = sistema.ordenarCorrInsc();
+
+        tabla.innerHTML = "";
+
+
+    } else {
+
+        inscOrdenadas = sistema.ordenarCorrXNum();
+
+        tabla.innerHTML = "";
+
+
+    }
+
+    for (let insc of inscOrdenadas) {
+
+        if (insc.carrera.nombre === carreraSeleccionada) {
+
+
+            let corredor = insc.corredor;
+
+
+            let fila = tabla.insertRow();
+
+            let c1 = fila.insertCell();
+            c1.innerHTML = corredor.nombre;
+
+            let c2 = fila.insertCell();
+            c2.innerHTML = corredor.edad;
+
+            let c3 = fila.insertCell();
+            c3.innerHTML = corredor.cedula;
+
+            let c4 = fila.insertCell();
+            c4.innerHTML = corredor.fechVenc;
+
+            let c5 = fila.insertCell();
+            c5.innerHTML = insc.num;
+        }
+    }
+
+}
+
+
+// Parte de el mapa 
+
+google.charts.load('current', {
+    'packages': ['geochart'],
+    // No necesitas API key
+});
+google.charts.setOnLoadCallback(drawRegionsMap);
+
+function drawRegionsMap() {
+    var data = google.visualization.arrayToDataTable([
+        ['Region', 'Cantidad'],
+        ['UY-MO', 100],
+        ['UY-CA', 90],
+        ['UY-MA', 80],
+        ['UY-RO', 70],
+        ['UY-TT', 60],
+        ['UY-CL', 50],
+        ['UY-RV', 40],
+        ['UY-AR', 30],
+        ['UY-SA', 20],
+        ['UY-PA', 10],
+        ['UY-RN', 5],
+        ['UY-SO', 15],
+        ['UY-CO', 25],
+        ['UY-SJ', 35],
+        ['UY-FS', 45],
+        ['UY-FD', 55],
+        ['UY-LA', 65],
+        ['UY-DU', 75],
+        ['UY-TA', 85]   
+    ]);
+
+    var options = {
+        region: 'UY',
+        resolution: 'provinces',
+        colorAxis: { colors: ['#e0f3f8', '#005824'] },
+        backgroundColor: '#f5f5f5',
+        datalessRegionColor: '#cccccc',
+        defaultColor: '#f5f5f5'
+    };
+
+    var chart = new google.visualization.GeoChart(document.getElementById('mapa'));
+    chart.draw(data, options);
 }

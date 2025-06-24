@@ -6,7 +6,6 @@
 
 
 <ul>
-
-<li>Hacer parte de buscar corredores </li>
+<li>Terminar parte del mapa</li>
 
 </ul>

@@ -6,11 +6,13 @@
 class Carrera {
 
     constructor(nom, depto, fecha, cupo) {
+
         this.nombre = nom;
         this.departamento = depto;
         this.fecha = fecha;
         this.cupo = cupo;
         this.inscriptos = 0;
+
     }
     toString() {
         return " " + this.nombre + " " + this.departamento + " " + this.fecha + " " + this.cupo;
@@ -53,6 +55,7 @@ class Inscripcion {
 
     constructor(corr, carr) {
 
+        this.num = 0;
         this.corredor = corr;
         this.carrera = carr;
 
@@ -73,9 +76,11 @@ class Sistema {
         this.corredores = [];
         this.inscripciones = [];
 
+        this.numCorrInsc = 0;
     }
 
     agregarCarrera(carrera) {
+
         this.carreras.push(carrera);
     }
 
@@ -163,6 +168,8 @@ class Sistema {
 
     agregarInscripcion(insc) {
 
+        this.numCorrInsc++;
+        insc.num = this.numCorrInsc;
         this.inscripciones.push(insc);
 
     }
@@ -173,9 +180,26 @@ class Sistema {
 
     }
 
+    ordenarCorrXNum() {
+
+        return this.inscripciones.sort((a, b) => a.num - b.num);
+
+    }
+
     ordenarCorrXNom() {
 
         return this.corredores.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+    }
+
+    ordenarCorrInsc() {
+
+        return this.inscripciones.sort((a, b) => a.corredor.nombre.localeCompare(b.corredor.nombre));
+
+    }
+
+    ordenarCarrXNum() {
+
 
     }
 
