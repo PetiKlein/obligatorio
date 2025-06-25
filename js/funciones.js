@@ -17,7 +17,8 @@ function inicio() {
     document.getElementById("radNomCorr").addEventListener("click", tableConsultaInsc);
     document.getElementById("radNumCorr").addEventListener("click", tableConsultaInsc);
     document.getElementById("consultaCarrera").addEventListener("click", tableConsultaInsc);
-
+    document.getElementById("carrRadio").addEventListener("change", drawRegionsMap);
+    document.getElementById("inscripRadio").addEventListener("change", drawRegionsMap);
 
 
     document.getElementById("sectionEstadisticas").style.display = "none";
@@ -60,7 +61,7 @@ function mostrarSeccion(event) {
         datosGenerales();
         selectConsultaInscriptos();
         tableConsultaInsc();
-
+        drawRegionsMap();
     }
 
 }
@@ -88,6 +89,7 @@ function agregarCarrera(event) {
 
             mostrarSelect();
             datosInsc();
+            drawRegionsMap();
         }
     }
 
@@ -462,44 +464,150 @@ function tableConsultaInsc() {
 
 // Parte de el mapa 
 
+
 google.charts.load('current', {
     'packages': ['geochart'],
 });
 google.charts.setOnLoadCallback(drawRegionsMap);
 
 function drawRegionsMap() {
-    var data = google.visualization.arrayToDataTable([
-        ['Region', 'Cantidad'],
-        ['UY-MO', 100],
-        ['UY-CA', 90],
-        ['UY-MA', 80],
-        ['UY-RO', 70],
-        ['UY-TT', 60],
-        ['UY-CL', 50],
-        ['UY-RV', 40],
-        ['UY-AR', 30],
-        ['UY-SA', 20],
-        ['UY-PA', 10],
-        ['UY-RN', 5],
-        ['UY-SO', 15],
-        ['UY-CO', 25],
-        ['UY-SJ', 35],
-        ['UY-FS', 45],
-        ['UY-FD', 55],
-        ['UY-LA', 65],
-        ['UY-DU', 75],
-        ['UY-TA', 85]   
-    ]);
+
+    if (document.getElementById("carrRadio").checked) {
+
+        var data = google.visualization.arrayToDataTable(datosCarrMapa());
+
+    } else {
+
+        var data = google.visualization.arrayToDataTable(datosInscMapa());
+
+    }
 
     var options = {
         region: 'UY',
         resolution: 'provinces',
-        colorAxis: { colors: ['#e0f3f8', '#005824'] },
+        colorAxis: { colors: ['#d0e6f9', '#003366'] },
         backgroundColor: '#f5f5f5',
         datalessRegionColor: '#cccccc',
         defaultColor: '#f5f5f5'
     };
 
-    var chart = new google.visualization.GeoChart(document.getElementById('mapa'));
+
+    var chart = new google.visualization.GeoChart(document.getElementById('mapaUru'));
     chart.draw(data, options);
+}
+
+function datosCarrMapa() {
+
+    // Filtrar datos del mapa por carreras
+
+    let carrMap = {};
+
+    for (let carr of sistema.carreras) {
+
+        let depto = carr.departamento;
+
+        if (!carrMap[depto]) {
+
+            carrMap[depto] = 1;
+        } else {
+
+            carrMap[depto]++;
+        }
+
+    }
+
+    let codDeptos = {
+        'Montevideo': 'UY-MO',
+        'Canelones': 'UY-CA',
+        'Maldonado': 'UY-MA',
+        'Rocha': 'UY-RO',
+        'Treinta y Tres': 'UY-TT',
+        'Cerro Largo': 'UY-CL',
+        'Rivera': 'UY-RV',
+        'Artigas': 'UY-AR',
+        'Salto': 'UY-SA',
+        'Paysandú': 'UY-PA',
+        'Río Negro': 'UY-RN',
+        'Soriano': 'UY-SO',
+        'Colonia': 'UY-CO',
+        'San José': 'UY-SJ',
+        'Flores': 'UY-FS',
+        'Florida': 'UY-FD',
+        'Lavalleja': 'UY-LA',
+        'Durazno': 'UY-DU',
+        'Tacuarembó': 'UY-TA'
+    };
+
+    let datosMapa = [['Region', 'Cantidad Carreras']];
+
+    for (let dep of Object.keys(carrMap)) {
+
+        let codigo = codDeptos[dep];
+
+        if (codigo) {
+
+            datosMapa.push([codigo, carrMap[dep]]);
+        }
+    }
+
+    return datosMapa;
+}
+
+
+function datosInscMapa() {
+
+    // Filtrar datos del mapa por inscripciones
+
+    let carrMap = {};
+
+    for (let carr of sistema.carreras) {
+
+        let depto = carr.departamento;
+        let inscrip = carr.inscriptos;
+
+        if (!carrMap[depto]) {
+
+            carrMap[depto] = inscrip;
+        } else {
+
+            carrMap[depto] += inscrip;
+        }
+
+    }
+
+    let codDeptos = {
+        'Montevideo': 'UY-MO',
+        'Canelones': 'UY-CA',
+        'Maldonado': 'UY-MA',
+        'Rocha': 'UY-RO',
+        'Treinta y Tres': 'UY-TT',
+        'Cerro Largo': 'UY-CL',
+        'Rivera': 'UY-RV',
+        'Artigas': 'UY-AR',
+        'Salto': 'UY-SA',
+        'Paysandú': 'UY-PA',
+        'Río Negro': 'UY-RN',
+        'Soriano': 'UY-SO',
+        'Colonia': 'UY-CO',
+        'San José': 'UY-SJ',
+        'Flores': 'UY-FS',
+        'Florida': 'UY-FD',
+        'Lavalleja': 'UY-LA',
+        'Durazno': 'UY-DU',
+        'Tacuarembó': 'UY-TA'
+    };
+
+    let datosMapa = [['Region', 'Cantidad Inscriptos']];
+
+    for (let depto of Object.keys(carrMap)) {
+
+        let codigo = codDeptos[depto];
+
+        if (codigo) {
+
+            datosMapa.push([codigo, carrMap[depto]]);
+        }
+    }
+
+    return datosMapa;
 }
